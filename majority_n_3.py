@@ -9,7 +9,7 @@ class Solution:
         from collections import Counter
         count_ = Counter(nums)
 
-        majority = len(nums)//2
+        majority = len(nums)//3
         for ele , c in count_.items():
             if c > majority:
                 return ele
