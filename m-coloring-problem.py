@@ -19,27 +19,26 @@ given graph using 3 colours.
 """
 
 ##### Optimal #####
-
 def graphColoring(graph, k, V):
     color = [0]*V
     
-    def  isSafe(graph, color, node, n, col):
+    def  isSafe(graph, node, n, col):
         for k in range(n):
             if k != node and color[k] == col and graph[k][node] == 1:
                 return False
         return True
     
-    def solve(graph, color, node, m,  n):
+    def solve(graph, node, m,  n):
         if node == n:
             return True
         
         for col in range(1, m+1):
-            if isSafe(graph, color, node, n, col):
+            if isSafe(graph, node, n, col):
                 color[node] = col
-                if solve(graph, color, node+1, m , n) == True:
+                if solve(graph, node+1, m , n):
                     return True
                 color[node] = 0
                 
         return False
-    return solve(graph, color, 0, k, V)
+    return solve(graph, 0, k, V)
     
