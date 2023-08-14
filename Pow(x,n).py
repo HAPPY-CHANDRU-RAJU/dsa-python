@@ -24,3 +24,16 @@ class Solution:
             return res* res
         else:
             return x* res*res
+
+# Optimal 2
+class Solution:
+    def myPow(x,n):
+        ans = 1
+        while n > 0:
+            if n%2 == 1:
+                ans = ans *x
+                n -= 1
+            else:
+                x = x*x
+                n = n//2
+        return ans
