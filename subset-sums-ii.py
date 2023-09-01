@@ -15,6 +15,8 @@ Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
 
 
 ##### Better  #####
+#  TC : O(2^N)
+
 
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:

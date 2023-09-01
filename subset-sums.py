@@ -27,6 +27,8 @@ Sum = 2+3 = 5.
 """
 
 ##### Optimal #####
+#  TC : O(2^N)
+
 def subsetSums(self, arr, N):
     ans = []
     def subsetSumUtil(arr, n, ind, sum_):
