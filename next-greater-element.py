@@ -51,3 +51,19 @@ class Solution:
                 nge[indx] = next_greater(index_dict[nums1[indx]], nums2)
 
         return nge
+
+# OR
+
+def nextGreater(arr,n):
+    nse = [-1] * n
+    stk = []
+    for i in range(n-1, -1, -1):
+        while(len(stk)> 0 and stk[-1] <= arr[i]):
+            stk.pop()
+        
+        if len(stk) != 0:
+            nse[i] = stk[-1]
+        stk.append(arr[i])
+    return nse
+    
+    
