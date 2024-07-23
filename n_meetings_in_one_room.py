@@ -56,7 +56,7 @@ def maximumMeetings(start: List[int], end: List[int]) -> int:
 # Optimal
 """
     Time complexity     : (n log n)
-    Space complexity    : (1)
+    Space complexity    : (n)
 """
 
 ######## Steps of the Greedy Approach
