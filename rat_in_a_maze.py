@@ -56,14 +56,15 @@ Explanation For Sample Input 2:
 As no valid path exists in Sample input 2 so we return an empty list.
 
 LINK 1 : https://www.naukri.com/code360/problems/rat-in-a-maze
+
 LINK 2 : https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/ 
 """
 
 
 # Optimal
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : (4^(n^2)) 
+    Space complexity    : (n^2)
 """
 
 from os import *
