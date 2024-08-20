@@ -25,7 +25,7 @@ LINK : https://leetcode.com/problems/subsets/
 # Optimal - Bit Manipulation
 """
     Time complexity     : (n * 2^n)
-    Space complexity    : (n * 2^n)
+    Space complexity    : (n)
 """
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
