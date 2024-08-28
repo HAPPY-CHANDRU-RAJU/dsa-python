@@ -14,8 +14,7 @@ Explanation:
 In the first test case for query 
 1 2 the queue will be {2}
 1 3 the queue will be {2 3}
-2   poped element will be 2 the 
-    queue will be {3}
+2   poped element will be 2 the queue will be {3}
 1 4 the queue will be {3 4}
 2   poped element will be 3 
 
@@ -26,10 +25,8 @@ Output: 3 -1
 Explanation:
 In the second testcase for query 
 1 3 the queue will be {3}
-2   poped element will be 3 the
-    queue will be empty
-2   there is no element in the
-    queue and hence -1
+2   poped element will be 3 the queue will be empty
+2   there is no element in the queue and hence -1
 1 4 the queue will be {4}. 
 
 
