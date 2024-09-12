@@ -30,6 +30,13 @@ LINK : https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 """
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
+        """
+            > Use a stack to keep track of bar indices.
+            > Traverse through the histogram:
+                - Push the index of the bar onto the stack if it's higher than the bar at the top of the stack.
+                - If the current bar is lower than the stack's top, pop indices from the stack and calculate the area of rectangles with the popped bars as the smallest height.
+            > Continue this until all bars are processed, and then calculate areas for the remaining bars in the stack.
+        """
         stack = []
         max_area = 0
         index = 0
