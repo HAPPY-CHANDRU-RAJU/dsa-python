@@ -42,6 +42,9 @@ from collections import deque
 
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        if not grid:
+            return -1
+        
         rows = len(grid)
         cols = len(grid[0])
 
@@ -51,22 +54,22 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == 2:
-                    rotten.append((r,c))
+                    rotten.append((r,c, 0))
                 elif grid[r][c] == 1:   
                    fresh_count += 1
         
-        directions = ((0,1), (0, -1), (1,0), (0,1))
-        time = 0
+        directions = ((0, 1), (0, -1), (1, 0), (-1, 0))
+        max_time = 0
 
-        while rotten and fresh_count > 0:
-            time += 1
-            for _ in range(len(rotten)):
-                x, y = rotten.popleft()
-                for dx, dy in directions:
-                    nx, ny = x+dx, y+dy
-                    if 0<=nx<rows and 0<=ny<cols and grid[nx][ny] == 1:
-                        grid[nx][ny]= 2
-                        rotten.append((nx, ny))
-                        fresh_count -= 1
+        while rotten:
+            x, y, time = rotten.popleft()
+            for dx, dy in directions:
+                nx, ny = x+dx, y+dy
+                if 0<=nx<rows and 0<=ny<cols and grid[nx][ny] == 1:
+                    grid[nx][ny]= 2
+                    fresh_count -= 1
+                    rotten.append((nx, ny, time+1))
+                    max_time = max(max_time, time+1)
         
-        return time if fresh_count == 0 else -1
+        return -1 if fresh_count > 0 else max_time
+
