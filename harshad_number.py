@@ -28,7 +28,7 @@ LINK : https://leetcode.com/problems/harshad-number/description/
 # Brute Force
 """
     Time complexity     : (log x)
-    Space complexity    : (1)
+    Space complexity    : (log x) # Due to string conversion and the intermediate list of digits.
 """
 class Solution:
     def sumOfTheDigitsOfHarshadNumber(self, x: int) -> int:
