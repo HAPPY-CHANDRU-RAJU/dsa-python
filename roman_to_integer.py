@@ -119,8 +119,8 @@ class Solution:
         total = 0
         prev_value = 0
 
-        for i in reversed(s):
-            value = roman_to_int[i]
+        for roman_char in reversed(s):
+            value = roman_to_int[roman_char]
 
             if value < prev_value:
                 total -= value
@@ -128,5 +128,4 @@ class Solution:
                 total += value
             
             prev_value = value
-        
         return total
