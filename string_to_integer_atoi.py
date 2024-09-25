@@ -142,7 +142,7 @@ class Solution:
 
         result = 0
         while i < len(s) and s[i].isdigit():
-            result = result * 10 +int(s[i])
+            result = result*10 + int(s[i])
             i += 1
         
         result *= sign
