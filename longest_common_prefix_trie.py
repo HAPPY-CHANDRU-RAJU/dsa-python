@@ -52,6 +52,9 @@ LINK : https://www.naukri.com/code360/problems/longest-common-prefix_
     Space complexity    : (m)
 """
 def longestCommonPrefix(arr, n):
+    if not strs:
+        return ""
+
     prefix = arr[0]
     for word in arr[1:]:
         while word[:len(prefix)] != prefix:
@@ -59,6 +62,25 @@ def longestCommonPrefix(arr, n):
             if not prefix:
                 return ""
     return prefix 
+
+                        ############## or ################
+                        
+"""
+    Time complexity     : (n*m)
+    Space complexity    : (1)
+"""
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        res = ""
+        prefix = strs[0]
+
+        for word in strs[1:]:
+            while word[:len(prefix)] != prefix:
+                prefix = prefix[:-1] 
+                if not prefix:
+                    return ""
+        
+        return prefix
 
 # Optimal 
 """
