@@ -24,7 +24,7 @@ LINK : https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a
 """
 
 
-# Optimal
+# Brute force
 """
     Time complexity     : (n+m) or (n*m)
     Space complexity    : (1) 
