@@ -33,6 +33,37 @@ class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         return haystack.find(needle) # Using algorithm like Knuth-Morris-Pratt (KMP) 
 
+#################### OR ####################
+
+"""
+    Time complexity     : (n*m)
+    Space complexity    : (1) 
+"""
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if not haystack or not needle:
+            return -1
+        
+        n = len(haystack)
+        m = len(needle)
+
+        if m > n:
+            return -1
+
+        for i in range(n):
+            indx = i
+            j = 0
+            while j < m and indx < n:
+                if needle[j] == haystack[indx]:
+                    j += 1
+                    indx += 1
+                else:
+                    break
+            
+            if j == m:
+                return i
+        return -1
+
 
 # Optimal - Rabin-Karp algorithm
 """
