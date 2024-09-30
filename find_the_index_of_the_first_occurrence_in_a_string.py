@@ -68,7 +68,7 @@ class Solution:
 # Optimal - Rabin-Karp algorithm
 """
     Time complexity     : (n*m)
-    Space complexity    : (1)  or (m)
+    Space complexity    : (1)
 """
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
@@ -193,3 +193,5 @@ class Solution:
                 return i - pat_len - 1  # Return the index where the needle starts in haystack
 
         return -1  # If needle is not found, return -1
+
+
