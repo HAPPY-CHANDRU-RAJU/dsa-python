@@ -195,3 +195,57 @@ class Solution:
         return -1  # If needle is not found, return -1
 
 
+"""
+    Time complexity     : (n+m)
+    Space complexity    : (n+m) 
+"""
+class Solution:
+    def compute_lps(self, pattern):
+        n = len(pattern)
+        lps = [0] * n
+
+        length = 0
+        i = 1
+
+        while i < n:
+            if pattern[i] == pattern[length]:
+                length += 1
+                lps[i] = length
+                i += 1
+            else:
+                if length != 0:
+                    length = lps[length-1]
+                else:
+                    lps[i] = 0
+                    i += 1
+        return lps
+
+    def strStr(self, haystack: str, needle: str) -> int:
+        if not haystack or not needle:
+            return -1
+
+        n = len(haystack)
+        m = len(needle)
+
+        if m > n:
+            return -1
+        
+        lps = self.compute_lps(needle)
+
+        i = 0
+        j = 0
+        while i < n:
+            if needle[j] == haystack[i]:
+                i += 1
+                j += 1
+
+            if j == m:
+                return i-j
+                j = lps[j-1]
+            elif i < n and needle[j] != haystack[i]:
+                if j != 0:
+                    j = lps[j-1]
+                else:
+                    i += 1
+        
+        return -1
