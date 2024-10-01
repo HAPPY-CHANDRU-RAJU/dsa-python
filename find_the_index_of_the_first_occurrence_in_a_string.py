@@ -197,7 +197,7 @@ class Solution:
 
 """
     Time complexity     : (n+m)
-    Space complexity    : (n+m) 
+    Space complexity    : (m) 
 """
 class Solution:
     def compute_lps(self, pattern):
