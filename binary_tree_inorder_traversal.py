@@ -60,7 +60,7 @@ class Solution:
 # Optimal
 """
     Time complexity     : (n)
-    Space complexity    : (1)
+    Space complexity    : (n) (worst case) or (log n) (average case for a balanced tree)
 """
 # Definition for a binary tree node.
 
@@ -72,17 +72,15 @@ class Solution:
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        curr = root
-        stack = []
-        res = []
-        while curr or stack:
-            while curr:
-                stack.append(curr)
-                curr = curr.left
-            
-            curr = stack.pop()
-            res.append(curr.val)
-
-            curr = curr.right
+        res, stack = [], []
+        current = root
+        
+        while current or stack:
+            while current:
+                stack.append(current)
+                current = current.left
+            current = stack.pop()
+            res.append(current.val)
+            current = current.right
         
         return res
