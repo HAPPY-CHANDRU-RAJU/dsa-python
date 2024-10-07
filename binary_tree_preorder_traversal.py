@@ -45,20 +45,19 @@ LINK : https://leetcode.com/problems/binary-tree-preorder-traversal/
 #         self.right = right
 
 class Solution:
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
+    def preorder(self, node, res):
+        if not node:
+            return 
 
-        result = []
-        def preorder(root):
-            if not root:
-                return
-            result.append(root.val)
-            preorder(root.left)
-            preorder(root.right)
-        
-        preorder(root)
-        return result
+        res.append(node.val)
+        self.preorder(node.left, res)
+        self.preorder(node.right, res)
+
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        self.preorder(root, res)
+        return res
+
 
 # Optimal
 """
