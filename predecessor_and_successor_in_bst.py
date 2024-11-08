@@ -44,8 +44,8 @@ LINK : https://www.naukri.com/code360/problems/_893049?leftPanelTabValue=PROBLEM
 
 # Optimal
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : O(h), where h is the height of the tree.
+    Space complexity    : O(1), as it uses constant space.
 """
 # Max of left tree
 def findPredecessor(node):
