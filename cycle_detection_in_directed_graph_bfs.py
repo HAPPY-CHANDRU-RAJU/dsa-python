@@ -66,33 +66,25 @@ LINK : https://www.naukri.com/code360/problems/detect-cycle-in-a-directed-graph_
     Time complexity     : O(V + E)
     Space complexity    : O(V + E)  
 """
-from collections import defaultdict
+from collections import defaultdict, deque
 
 def detectCycleInDirectedGraph(n, edges):
+    in_degree = [0]*n
+
     adj_matrix = defaultdict(list)
     for x, y in edges:
         adj_matrix[x - 1].append(y - 1)  
+        in_degree[y-1] += 1
     
-    def dfs(node, visited, recursion):
-        visited[node] = True
-        recursion[node] = True  
+    queue = deque([ i for i in range(n) if(in_degree[i]==0) ])
+    count = 0
 
-        for neighbour in adj_matrix[node]:
-            if not visited[neighbour]:
-                if dfs(neighbour, visited, recursion):
-                    return True
-            elif recursion[neighbour]: 
-                return True
-
-        recursion[node] = False  
-        return False
-
-    visited = [False] * n 
-    recursion = [False] * n
-
-    for i in range(n):
-        if not visited[i]: 
-            if dfs(i, visited, recursion):  
-                return True
-
-    return False
+    while queue:
+        node = queue.popleft()
+        count += 1
+        for neighbours in adj_matrix[node]:
+            in_degree[neighbours] -= 1
+            if in_degree[neighbours] == 0:
+                queue.append(neighbours)
+        
+    return count != n
