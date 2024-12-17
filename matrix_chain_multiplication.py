@@ -74,7 +74,6 @@ def matrixMultiplication(arr, n):
 """
 
 def matrixMultiplication(arr, n):
-	
 	dp = [[0]*n for _ in range(n)]
 
 	for length in range(2, n):
