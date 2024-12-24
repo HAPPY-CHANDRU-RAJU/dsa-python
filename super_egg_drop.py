@@ -36,24 +36,18 @@ Constraints:
 LINK : https://leetcode.com/problems/super-egg-drop/description/
 """
 
-# Intuition 
+# Brute Force
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : (k * n * n)
+    Space complexity    : (n * k)
 """
 class Solution:
-    def __init__(self):
-        self.memo = {}
-    
     def superEggDrop(self, k: int, n: int) -> int:
         if  n == 1 or n == 0 :
             return n
 
         if k == 1:
             return n
-
-        if (k,n) in self.memo:
-            return self.memo[(k, n)]
 
         min_result = float('inf')
         for x in range(1, n+1):
@@ -62,17 +56,14 @@ class Solution:
 
             # Maximum Floors
             worst_case = max(non_break_case, break_case)+1
-
             min_result = min(min_result, worst_case)
 
-        self.memo[(k,n)] = min_result
-        return self.memo[(k,n)]
-
-
-# Brute Force
+        return min_result
+ 
+# Medium Effort
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : (n * k * k)
+    Space complexity    : (n * k)
 """
 class Solution:
     def __init__(self):
@@ -100,10 +91,10 @@ class Solution:
         return self.memo[(k,n)]
 
 
-# Medium Effort
+# Optimal
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : O(k * n * log(n))
+    Space complexity    : O(k * n)
 """
 class Solution:
     def __init__(self):
@@ -139,10 +130,10 @@ class Solution:
         self.memo[(k,n)] = min_result
         return self.memo[(k,n)]
 
-# Optimal
+# Optimal - Mathematical solution
 """
-    Time complexity     : 
-    Space complexity    : 
+    Time complexity     : O(k * log(n))
+    Space complexity    : O(k)
 """
 class Solution:
     def superEggDrop(self, k: int, n: int) -> int:
