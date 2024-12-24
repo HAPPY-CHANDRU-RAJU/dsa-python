@@ -39,24 +39,27 @@ LINK : https://leetcode.com/problems/word-break/
     Space complexity    : (n)
 """
 class Solution:
-    def solver(self, start, n, s, wordDict, memo):
-        if start == n:
-            return True
-        
-        if start in memo:
-            return memo[start]
-
-        for end in range(start+1, n+1):
-            if s[start:end] in wordDict and self.solver(end, n, s, wordDict, memo):
-                memo[start] = True
-                return True
-
-        memo[start] = False
-        return False
-
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         n = len(s)
-        return self.solver(0, n, s, set(wordDict), {})
+        wordDict = set(wordDict)
+
+        memo = {}
+        def solver(start):
+            if start == n:
+                return True
+            
+            if start in memo:
+                return memo[start]
+
+            for end in range(start+1, n+1):
+                if s[start: end] in wordDict and solver(end):
+                    memo[start]= True
+                    return True
+            
+            memo[start] = False
+            return False
+
+        return solver(0)
 
 # Optimal
 """
