@@ -25,6 +25,35 @@ digits[i] is a digit in the range ['2', '9'].
 LINK : https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/?envType=study-plan-v2
 """
 
+# Brute Force
+"""
+    Time Complexity     :   (n * 4^n ) — We still generate all possible combinations, which requires O(4^n) time.
+    Space Complexity    :   (n * 4^n ) — Space is required to store all combinations, and each combination has length n.
+"""
+from typing import List
+from itertools import product
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        
+        keypad = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz"
+        }
+        
+        letters = [ keypad[digit] for digit in digits]
+        return (
+            ["".join(letter) for letter in list(product(*letters)) ]
+        )
+
 # Optimal
 """
     Time Complexity     :   (4^n) — We still generate all possible combinations, which requires O(4^n) time.
