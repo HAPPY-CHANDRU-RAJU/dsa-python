@@ -64,9 +64,7 @@ class Solution:
                 return True
         return False        
             
-
-
-# Optimal
+# Optimal - small set
 """
     Time complexity     : (m + n)
     Space complexity    : (1)
@@ -85,3 +83,36 @@ class Solution:
             else:
                 r += 1
         return False
+
+
+# Optimal - large set
+"""
+    Time complexity     : (log m + log n)
+    Space complexity    : (1)
+"""
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        def binary_search(indx):
+            left_indx, right_indx = 0, len(matrix[0])
+            while left_indx < right_indx:
+                mid_indx = (left_indx + right_indx ) // 2
+                if matrix[indx][mid_indx] == target:
+                    return True
+                if matrix[indx][mid_indx] > target:
+                    right_indx -= 1
+                else:
+                    left_indx += 1
+            return False 
+
+        def bs_row(left, right):
+            while left < right:
+                mid = (left+right) // 2
+                if matrix[mid][0] <= target and target <= matrix[mid][-1]:
+                    return binary_search(mid)
+                elif matrix[mid][0] > target:
+                    right -= 1
+                else:
+                    left += 1
+            return False
+            
+        return bs_row(0, len(matrix))
